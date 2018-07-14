@@ -1,8 +1,8 @@
 message("External project: OpenCV")
 
 ExternalProject_Add(opencv
-  GIT_REPOSITORY ${git_protocol}://github.com/cedricve/opencv
-  GIT_TAG h264-preset
+  GIT_REPOSITORY ${git_protocol}://github.com/pgeri91/opencv
+  GIT_TAG 3.4.2
   SOURCE_DIR opencv
   BINARY_DIR opencv-build
   UPDATE_COMMAND ""
@@ -17,11 +17,15 @@ ExternalProject_Add(opencv
     -DBUILD_PACKAGE:BOOL=OFF
     -DBUILD_opencv_core=ON
     -DBUILD_opencv_imgproc=ON
+    -DBUILD_opencv_cudabgsegm=ON
+    -DBUILD_opencv_cudaimgproc=ON
+    -DBUILD_opencv_cudafeatures2d=ON
+    -DBUILD_opencv_cudafilters=OFF
     -DBUILD_opencv_highgui=ON
     -DBUILD_opencv_video=ON
     -DBUILD_opencv_apps=OFF
     -DBUILD_opencv_flann=ON
-    -DBUILD_opencv_gpu=OFF
+    -DBUILD_opencv_gpu=ON
     -DBUILD_opencv_ml=ON
     -DBUILD_opencv_legacy=OFF
     -DBUILD_opencv_calib3d=OFF
@@ -43,6 +47,8 @@ ExternalProject_Add(opencv
     -DCMAKE_BUILD_TYPE:STRING=Release
     -DWITH_FFMPEG:BOOL=ON
     -DWITH_IPP:BOOL=OFF
+    -DWITH_CUDA=ON
+    -DCUDA_GENERATION=Pascal
     -DBUILD_PNG:BOOL=OFF
     -DBUILD_JPEG:BOOL=ON
     -DBUILD_ZLIB:BOOL=ON
@@ -58,8 +64,8 @@ else()
   set(OPENCV_LIBRARY_DIR ${CMAKE_BINARY_DIR}/thirdparty/x86/vc12/lib)
 endif()
 
-set(OPENCV_LIBRARIES opencv_imgproc opencv_core opencv_highgui opencv_video opencv_videoio opencv_imgcodecs opencv_features2d)
-
+set(OPENCV_LIBRARIES opencv_imgproc opencv_cudabgsegm opencv_core opencv_highgui opencv_video opencv_videoio opencv_imgcodecs opencv_features2d)
+set(CUDA_GENERATION "Pascal")
 include_directories(${OPENCV_INCLUDE_DIR})
 link_directories(${OPENCV_LIBRARY_DIR})
 
