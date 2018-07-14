@@ -17,7 +17,7 @@
     </BackgroundSubtraction>
 	
 	<BackgroundSubtractionCuda>
-    	<shadows type="text">true</shadows>
+    		<shadows type="text">true</shadows>
 		<history type="number">50</history>
 		<nmixtures type="number">5</nmixtures>
 		<ratio type="number">1</ratio>
