@@ -39,6 +39,7 @@
         machinery/condition/Enabled.cpp
         machinery/algorithm/DifferentialCollins.cpp
         machinery/algorithm/BackgroundSubtraction.cpp
+        machinery/algorithm/BackgroundSubtractionCuda.cpp
         machinery/expositor/RectangleExpositor.cpp
         machinery/expositor/HullExpositor.cpp
         machinery/heuristic/Sequence.cpp
