@@ -96,7 +96,8 @@ namespace kerberos
 
         if(codec == "h264")
         {
-            m_codec = 0x00000021;//CV_FOURCC('H','2','6','4');
+            //m_codec = 0x00000021;//CV_FOURCC('H','2','6','4');
+            m_codec = CV_FOURCC('H','2','6','4');
         }
         else
         {
